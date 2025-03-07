@@ -1,0 +1,39 @@
+---
+## Binary install
+#opensearch_version: "1.3.0"
+#opensearch_tgz: "opensearch-{{ opensearch_version: }}-linux-x64.tar.gz"
+#opensearch_tgz_url: "https://artifacts.opensearch.org/releases/bundle/opensearch/{{ opensearch_version: }}/{{ opensearch_tgz }}"
+#opensearch_temp_dir: "/tmp"
+#
+opensearch_user: opensearch
+opensearch_admin_password: "MySt0ongp4ss!?"
+opensearch_config_dir: "/etc/opensearch"
+
+## Configuration
+opensearch_install_type: "single"
+opensearch_cluster_initial_master_nodes: 
+  - "{{ inventory_hostname }}"
+opensearch_discovery_seed_hosts: 
+  - "{{ ansible_default_ipv4.address }}"
+opensearch_cluster_name: "My-app"
+opensearch_path_data: "/var/lib/opensearch"
+opensearch_path_log: "/var/log/opensearch"
+opensearch_auto_create_index: false
+opensearch_listen_address: "0.0.0.0"
+opensearch_listen_port: 9200
+opensearch_destructive_requires_name: true
+opensearch_plugins_security_disabled: true
+opensearch_bootstrap_memory_lock: false
+
+
+### Not working
+opensearch_experimental_feature_segment_replication_experimental_enabled: false
+opensearch_experimental_feature_searchable_snapshot_enabled: false
+opensearch_experimental_feature_extensions_enabled: false
+opensearch_experimental_optimization_datetime_formatter_caching_enabled: false
+opensearch_experimental_feature_pluggable_caching_enabled: false
+opensearch_experimental_feature_composite_index_star_tree_enabled: false
+
+## Jvm
+opensearch_min_heapsize: 1
+opensearch_max_heapsize: 1

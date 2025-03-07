@@ -1,0 +1,20 @@
+---
+- name: Disable the selinux
+  ansible.posix.selinux:
+    state: disabled
+  when:
+    - ansible_distribution != "Ubuntu"
+    - ansible_distribution != "Amazon"
+    - ansible_distribution != "Debian"
+
+- name: Including tasks to install opensearch
+  include_tasks: opensearch_install.yml
+
+- name: Installing opensearch
+  include_tasks: security.yml
+
+- name: user-management
+  include_tasks: user-management.yml
+
+- name: intializing
+  include_tasks: intializing.yml

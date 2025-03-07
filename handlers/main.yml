@@ -1,0 +1,6 @@
+---
+- name: "Restart opensearch"
+  systemd:
+    name: opensearch
+    state: restarted
+    enabled: true
